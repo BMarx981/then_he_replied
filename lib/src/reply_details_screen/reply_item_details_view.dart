@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:then_he_replied/src/reply_list_screen/reply_item.dart';
 
 /// Displays detailed information about a SampleItem.
 class ReplyItemDetailsView extends StatelessWidget {
@@ -8,12 +9,14 @@ class ReplyItemDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Item Details'),
+        title: Text(args['title']),
       ),
-      body: const Center(
-        child: Text('More Information Here'),
+      body: Center(
+        child: Text(args['text']),
       ),
     );
   }

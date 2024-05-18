@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:then_he_replied/src/reply_details_screen/reply_item_details_view.dart';
+import 'package:then_he_replied/src/reply_list_screen/reply_item.dart';
 import 'package:then_he_replied/src/reply_list_screen/reply_list_provider.dart';
 
 class ReplyItemListView extends ConsumerWidget {
@@ -20,7 +22,9 @@ class ReplyItemListView extends ConsumerWidget {
             final item = items[index];
 
             return ListTile(
-                title: Text('SampleItem ${item.id}'),
+                title: Text(
+                    '${item.title} ${DateFormat('MM/dd/yyyy').format(item.date)}'),
+                subtitle: Text('by: ${item.author}'),
                 leading: const CircleAvatar(
                   // Display the Flutter Logo image asset.
                   foregroundImage: AssetImage('assets/images/flutter_logo.png'),
@@ -32,6 +36,7 @@ class ReplyItemListView extends ConsumerWidget {
                   Navigator.restorablePushNamed(
                     context,
                     ReplyItemDetailsView.routeName,
+                    arguments: item.toMap(),
                   );
                 });
           },

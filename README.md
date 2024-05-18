@@ -1,16 +1,11 @@
 # then_he_replied
 
-A new Flutter project.
+Then he replied is an app to express your frustration for when you do something
 
-## Getting Started
+## Motivation
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
-
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+A lot of the time you will inform someone of something and they will then reply
+with what can only be described as frustrating.
 
 ## Assets
 
