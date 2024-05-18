@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:then_he_replied/src/reply_details_screen/reply_item_details_view.dart';
-import 'package:then_he_replied/src/reply_list_screen/reply_item.dart';
 import 'package:then_he_replied/src/reply_list_screen/reply_list_provider.dart';
 
 class ReplyItemListView extends ConsumerWidget {

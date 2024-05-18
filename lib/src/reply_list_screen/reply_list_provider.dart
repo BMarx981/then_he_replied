@@ -20,7 +20,31 @@ class ReplyListProvider extends _$ReplyListProvider {
             date: DateTime.now(),
             id: 1,
           ),
-          id: 1)
+          id: 1),
+      ReplyItem(
+          author: 'Mary',
+          text: 'I can\'t believe he said that',
+          date: DateTime.now(),
+          title: "He said what?",
+          comments: Comment(
+            author: 'Rebecca',
+            text: 'I believe it',
+            date: DateTime.now(),
+            id: 1,
+          ),
+          id: 1),
+      ReplyItem(
+          author: 'Mary',
+          text: 'I can\'t believe he said that',
+          date: DateTime.now(),
+          title: "He said what?",
+          comments: Comment(
+            author: 'Rebecca',
+            text: 'I believe it',
+            date: DateTime.now(),
+            id: 1,
+          ),
+          id: 1),
     ];
   }
 }

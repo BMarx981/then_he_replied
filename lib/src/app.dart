@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
                     return const ReplyItemDetailsView();
                   case ReplyItemMainView.routeName:
                   default:
-                    return const ReplyItemMainView();
+                    return ReplyItemMainView();
                 }
               },
             );
