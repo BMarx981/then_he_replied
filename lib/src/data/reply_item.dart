@@ -1,13 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:then_he_replied/src/comments_section/comment.dart';
+import 'package:then_he_replied/src/presentation/comments_section/comment.dart';
 
 class ReplyItem {
   String author;
   String text;
   DateTime date;
   String title;
+  String context;
   Comment comments;
   int id;
   ReplyItem({
@@ -15,6 +16,7 @@ class ReplyItem {
     required this.text,
     required this.date,
     required this.title,
+    required this.context,
     required this.comments,
     required this.id,
   });
@@ -24,6 +26,7 @@ class ReplyItem {
     String? text,
     DateTime? date,
     String? title,
+    String? context,
     Comment? comments,
     int? id,
   }) {
@@ -32,6 +35,7 @@ class ReplyItem {
       text: text ?? this.text,
       date: date ?? this.date,
       title: title ?? this.title,
+      context: context ?? this.context,
       comments: comments ?? this.comments,
       id: id ?? this.id,
     );
@@ -43,6 +47,7 @@ class ReplyItem {
       'text': text,
       'date': date.millisecondsSinceEpoch,
       'title': title,
+      'context': context,
       'comments': comments.toMap(),
       'id': id,
     };
@@ -54,6 +59,7 @@ class ReplyItem {
       text: map['text'] as String,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
       title: map['title'] as String,
+      context: map['context'] as String,
       comments: Comment.fromMap(map['comments'] as Map<String, dynamic>),
       id: map['id'] as int,
     );
@@ -66,7 +72,7 @@ class ReplyItem {
 
   @override
   String toString() {
-    return 'ReplyItem(author: $author, text: $text, date: $date, title: $title, comments: $comments, id: $id)';
+    return 'ReplyItem(author: $author, text: $text, date: $date, title: $title, context: $context, comments: $comments, id: $id)';
   }
 
   @override
@@ -77,6 +83,7 @@ class ReplyItem {
         other.text == text &&
         other.date == date &&
         other.title == title &&
+        other.context == context &&
         other.comments == comments &&
         other.id == id;
   }
@@ -87,6 +94,7 @@ class ReplyItem {
         text.hashCode ^
         date.hashCode ^
         title.hashCode ^
+        context.hashCode ^
         comments.hashCode ^
         id.hashCode;
   }

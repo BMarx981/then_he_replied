@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:then_he_replied/src/reply_list_screen/reply_item.dart';
 
 /// Displays detailed information about a SampleItem.
 class ReplyItemDetailsView extends StatelessWidget {
@@ -15,8 +14,11 @@ class ReplyItemDetailsView extends StatelessWidget {
       appBar: AppBar(
         title: Text(args['title']),
       ),
-      body: Center(
-        child: Text(args['text']),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Text(args['text']),
+        ),
       ),
     );
   }

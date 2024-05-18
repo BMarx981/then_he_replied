@@ -6,9 +6,12 @@ class ProfileView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Column(children: [
-      Row(children: [Text("Change your profile")]),
-      Expanded(child: TextField()),
-    ]);
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(children: [
+        Row(children: [Text("Change your profile")]),
+        Expanded(child: TextField()),
+      ]),
+    );
   }
 }

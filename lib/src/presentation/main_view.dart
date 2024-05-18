@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:then_he_replied/src/create_reply/create_reply_view.dart';
-import 'package:then_he_replied/src/profile/profile_view.dart';
-import 'package:then_he_replied/src/reply_list_screen/reply_list_view.dart';
+import 'package:then_he_replied/src/presentation/common/app_bar/app_bar.dart';
+import 'package:then_he_replied/src/presentation/create_reply/create_reply_view.dart';
+import 'package:then_he_replied/src/presentation/profile/profile_view.dart';
+import 'package:then_he_replied/src/presentation/reply_list_screen/reply_list_view.dart';
 
 import 'package:then_he_replied/src/settings/settings_view.dart';
 
@@ -23,19 +24,9 @@ class ReplyItemMainView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final indexBottomNavbar = ref.watch(indexBottomNavbarProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('...Then He Replied'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // Navigate to the settings page. If the user leaves and returns
-              // to the app after it has been killed while running in the
-              // background, the navigation stack is restored.
-              Navigator.restorablePushNamed(context, SettingsView.routeName);
-            },
-          ),
-        ],
+      appBar: const PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: RepliedAppBar(),
       ),
       body: bodies[indexBottomNavbar],
       bottomNavigationBar: BottomNavigationBar(
