@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:then_he_replied/src/presentation/login/login_view.dart';
 import 'package:then_he_replied/src/presentation/reply_details_screen/reply_item_details_view.dart';
 import 'package:then_he_replied/src/presentation/main_view.dart';
 
@@ -71,6 +72,8 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case ReplyItemDetailsView.routeName:
                     return const ReplyItemDetailsView();
+                  case LoginView.routeName:
+                    return const LoginView();
                   case ReplyItemMainView.routeName:
                   default:
                     return ReplyItemMainView();
