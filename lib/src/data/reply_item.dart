@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:then_he_replied/src/presentation/comments_section/comment.dart';
+import 'package:then_he_replied/src/data/comment.dart';
+
+typedef ReplyItemList = List<ReplyItem>;
 
 class ReplyItem {
   String author;

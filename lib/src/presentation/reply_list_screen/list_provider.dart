@@ -1,13 +1,13 @@
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:then_he_replied/src/presentation/comments_section/comment.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:then_he_replied/src/data/comment.dart';
 import 'package:then_he_replied/src/data/reply_item.dart';
 
-part 'reply_list_provider.g.dart';
+final listProvider =
+    NotifierProvider<ReplyListNotifier, ReplyItemList>(ReplyListNotifier.new);
 
-@riverpod
-class ReplyListProvider extends _$ReplyListProvider {
+class ReplyListNotifier extends Notifier<List<ReplyItem>> {
   @override
-  Future<List<ReplyItem>> build() async {
+  List<ReplyItem> build() {
     return [
       ReplyItem(
           author: 'Mary',
@@ -32,9 +32,9 @@ class ReplyListProvider extends _$ReplyListProvider {
             author: 'Rebecca',
             text: 'I believe it',
             date: DateTime.now(),
-            id: 1,
+            id: 2,
           ),
-          id: 1),
+          id: 2),
       ReplyItem(
           author: 'Mary',
           text: 'I can\'t believe he said that',
@@ -45,9 +45,13 @@ class ReplyListProvider extends _$ReplyListProvider {
             author: 'Rebecca',
             text: 'I believe it',
             date: DateTime.now(),
-            id: 1,
+            id: 3,
           ),
-          id: 1),
+          id: 3),
     ];
+  }
+
+  void addItem(ReplyItem item) {
+    state = [...state, item];
   }
 }
