@@ -26,6 +26,9 @@ class _ReplyTextFieldState extends ConsumerState<ReplyTitleTextField> {
     return Column(
       children: [
         TextField(
+          onChanged: (value) {
+            ref.read(titleProvider.notifier).state = value;
+          },
           controller: controller,
           decoration: const InputDecoration(
             labelText: 'Title',

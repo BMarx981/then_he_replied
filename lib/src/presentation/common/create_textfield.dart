@@ -67,7 +67,6 @@ class _ReplyTextFieldState extends ConsumerState<ReplyTextField> {
                           date: DateTime.now(),
                           id: 4),
                     ));
-                    controller.text;
                   },
                 ),
               )
