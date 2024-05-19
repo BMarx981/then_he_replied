@@ -22,36 +22,11 @@ class ReplyListNotifier extends Notifier<List<ReplyItem>> {
             id: 1,
           ),
           id: 1),
-      ReplyItem(
-          author: 'Mary',
-          text: 'I can\'t believe he said that',
-          date: DateTime.now(),
-          title: "He said what?",
-          context: "So I was doing this.",
-          comments: Comment(
-            author: 'Rebecca',
-            text: 'I believe it',
-            date: DateTime.now(),
-            id: 2,
-          ),
-          id: 2),
-      ReplyItem(
-          author: 'Mary',
-          text: 'I can\'t believe he said that',
-          date: DateTime.now(),
-          title: "He said what?",
-          context: "So I was doing this.",
-          comments: Comment(
-            author: 'Rebecca',
-            text: 'I believe it',
-            date: DateTime.now(),
-            id: 3,
-          ),
-          id: 3),
     ];
   }
 
   void addItem(ReplyItem item) {
     state = [...state, item];
+    print("Printing state of the list $state");
   }
 }

@@ -5,9 +5,7 @@ import 'package:then_he_replied/src/presentation/reply_details_screen/reply_item
 import 'package:then_he_replied/src/presentation/reply_list_screen/list_provider.dart';
 
 class ReplyItemListView extends ConsumerWidget {
-  const ReplyItemListView({
-    super.key,
-  });
+  const ReplyItemListView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,13 +23,9 @@ class ReplyItemListView extends ConsumerWidget {
                   '${item.title} ${DateFormat('MM/dd/yyyy').format(item.date)}'),
               subtitle: Text('by: ${item.author}'),
               leading: const CircleAvatar(
-                // Display the Flutter Logo image asset.
-                foregroundImage: AssetImage('assets/images/flutter_logo.png'),
+                child: Icon(Icons.person),
               ),
               onTap: () {
-                // Navigate to the details page. If the user leaves and returns to
-                // the app after it has been killed while running in the
-                // background, the navigation stack is restored.
                 Navigator.restorablePushNamed(
                   context,
                   ReplyItemDetailsView.routeName,
