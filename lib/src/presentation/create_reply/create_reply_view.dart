@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:then_he_replied/src/presentation/common/create_textfield.dart';
+import 'package:then_he_replied/src/presentation/create_reply/create_textfield.dart';
 import 'package:then_he_replied/src/presentation/create_reply/create_title_textfield.dart';
 
 class CreateReplyView extends ConsumerWidget {

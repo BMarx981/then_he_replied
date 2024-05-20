@@ -74,9 +74,9 @@ class MyApp extends StatelessWidget {
                     return const ReplyItemDetailsView();
                   case LoginView.routeName:
                     return const LoginView();
-                  case ReplyItemMainView.routeName:
+                  case MainView.routeName:
                   default:
-                    return ReplyItemMainView();
+                    return MainView();
                 }
               },
             );

@@ -4,6 +4,7 @@ import 'package:then_he_replied/src/data/comment.dart';
 import 'package:then_he_replied/src/data/reply_item.dart';
 import 'package:then_he_replied/src/presentation/create_reply/create_title_textfield.dart';
 import 'package:then_he_replied/src/presentation/reply_list_screen/list_provider.dart';
+import 'package:uuid/uuid.dart';
 
 class ReplyTextField extends ConsumerStatefulWidget {
   const ReplyTextField({super.key});
@@ -54,12 +55,13 @@ class _ReplyTextFieldState extends ConsumerState<ReplyTextField> {
                   ),
                   onPressed: () {
                     final notifier = ref.read(listProvider.notifier);
+                    final uc = UniqueKey().hashCode;
                     notifier.addItem(ReplyItem(
                       author: 'Currrent user',
                       text: controller.text,
                       date: DateTime.now(),
                       title: ref.read(titleProvider),
-                      id: 12,
+                      id: uc,
                       context: 'He was terrible',
                       comments: Comment(
                           author: 'Someone else',
@@ -67,6 +69,7 @@ class _ReplyTextFieldState extends ConsumerState<ReplyTextField> {
                           date: DateTime.now(),
                           id: 4),
                     ));
+                    // Navigator.pop(context);
                   },
                 ),
               )

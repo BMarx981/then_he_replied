@@ -5,11 +5,9 @@ import 'package:then_he_replied/src/presentation/create_reply/create_reply_view.
 import 'package:then_he_replied/src/presentation/profile/profile_view.dart';
 import 'package:then_he_replied/src/presentation/reply_list_screen/reply_list_view.dart';
 
-import 'package:then_he_replied/src/settings/settings_view.dart';
-
 /// Displays a list of ReplyItems.
-class ReplyItemMainView extends ConsumerWidget {
-  ReplyItemMainView({
+class MainView extends ConsumerWidget {
+  MainView({
     super.key,
   });
 

@@ -27,6 +27,15 @@ class ReplyListNotifier extends Notifier<List<ReplyItem>> {
 
   void addItem(ReplyItem item) {
     state = [...state, item];
-    print("Printing state of the list $state");
+  }
+
+  void removeItem(int id) {
+    final ls = state;
+    for (final item in ls) {
+      if (item.id == id) {
+        ls.remove(item);
+      }
+    }
+    state = ls;
   }
 }
