@@ -59,16 +59,16 @@ class ListTileItemWidget extends ConsumerWidget {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: Colors.grey, width: .5),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withAlpha(100),
-                  blurRadius: 3,
-                  offset: const Offset(3, 3),
-                )
-              ],
-              color: Colors.white),
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(color: Colors.grey, width: .5),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withAlpha(100),
+                blurRadius: 3,
+                offset: const Offset(3, 3),
+              )
+            ],
+          ),
           child: ListTile(
               title: Text(
                   '${item.title} ${DateFormat('MM/dd/yyyy').format(item.date)}'),

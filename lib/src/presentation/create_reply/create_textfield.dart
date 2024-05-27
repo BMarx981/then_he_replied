@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:then_he_replied/src/data/reply_item.dart';
 import 'package:then_he_replied/src/presentation/create_reply/create_title_textfield.dart';
+import 'package:then_he_replied/src/presentation/main_view.dart';
 import 'package:then_he_replied/src/presentation/reply_list_screen/list_provider.dart';
 
 class ReplyTextField extends ConsumerStatefulWidget {
@@ -33,10 +34,11 @@ class _ReplyTextFieldState extends ConsumerState<ReplyTextField> {
           minLines: 4,
           controller: controller,
           decoration: const InputDecoration(
+              label: Text("Then He Replied."),
               border: OutlineInputBorder(
-            borderRadius: BorderRadius.horizontal(
-                left: Radius.circular(25), right: Radius.circular(35)),
-          )),
+                borderRadius: BorderRadius.horizontal(
+                    left: Radius.circular(25), right: Radius.circular(35)),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -64,7 +66,7 @@ class _ReplyTextFieldState extends ConsumerState<ReplyTextField> {
                         context: 'He was terrible',
                       ),
                     );
-                    // Navigator.pop(context);
+                    ref.read(indexBottomNavbarProvider.notifier).state = 0;
                   },
                 ),
               )

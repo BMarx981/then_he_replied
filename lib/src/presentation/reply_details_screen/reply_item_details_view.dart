@@ -16,8 +16,13 @@ class ReplyItemDetailsView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: Text(args['text']),
+        child: Column(
+          children: [
+            Text(args['context']),
+            Center(
+              child: Text(args['text']),
+            ),
+          ],
         ),
       ),
     );
