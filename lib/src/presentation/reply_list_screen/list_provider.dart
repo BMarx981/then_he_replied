@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:then_he_replied/src/data/comment.dart';
 import 'package:then_he_replied/src/data/reply_item.dart';
 import 'package:then_he_replied/src/services/firestore_service.dart';
 
@@ -18,12 +17,6 @@ class ReplyListNotifier extends Notifier<List<ReplyItem>> {
           date: DateTime.now(),
           title: "He said what?",
           context: "So I was doing this.",
-          comments: Comment(
-            author: 'Rebecca',
-            text: 'I believe it',
-            date: DateTime.now(),
-            id: 1,
-          ),
           id: 1),
     ];
   }

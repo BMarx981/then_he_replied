@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:then_he_replied/src/data/comment.dart';
 import 'package:then_he_replied/src/data/reply_item.dart';
 import 'package:then_he_replied/src/presentation/create_reply/create_title_textfield.dart';
 import 'package:then_he_replied/src/presentation/reply_list_screen/list_provider.dart';
@@ -63,11 +62,6 @@ class _ReplyTextFieldState extends ConsumerState<ReplyTextField> {
                         title: ref.read(titleProvider),
                         id: uc,
                         context: 'He was terrible',
-                        comments: Comment(
-                            author: 'Someone else',
-                            text: 'I think that\'s aweful',
-                            date: DateTime.now(),
-                            id: 4),
                       ),
                     );
                     // Navigator.pop(context);

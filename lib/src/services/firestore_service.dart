@@ -19,8 +19,7 @@ class FirestoreService {
 
   //Read all replies
   Stream<QuerySnapshot> getReplies() {
-    final replyStream =
-        replies.orderBy('timestamp', descending: true).snapshots();
+    final replyStream = replies.orderBy('author', descending: true).snapshots();
     return replyStream;
   }
 

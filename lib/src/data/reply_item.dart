@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:then_he_replied/src/data/comment.dart';
 
 typedef ReplyItemList = List<ReplyItem>;
@@ -11,7 +12,6 @@ class ReplyItem {
   DateTime date;
   String title;
   String context;
-  Comment comments;
   int id;
   ReplyItem({
     required this.author,
@@ -19,7 +19,6 @@ class ReplyItem {
     required this.date,
     required this.title,
     required this.context,
-    required this.comments,
     required this.id,
   });
 
@@ -38,7 +37,6 @@ class ReplyItem {
       date: date ?? this.date,
       title: title ?? this.title,
       context: context ?? this.context,
-      comments: comments ?? this.comments,
       id: id ?? this.id,
     );
   }
@@ -50,19 +48,20 @@ class ReplyItem {
       'date': date.millisecondsSinceEpoch,
       'title': title,
       'context': context,
-      'comments': comments.toMap(),
       'id': id,
     };
   }
 
   factory ReplyItem.fromMap(Map<String, dynamic> map) {
+    final Timestamp timestamp = map['date'];
+    final DateTime date = timestamp.toDate();
+
     return ReplyItem(
       author: map['author'] as String,
       text: map['text'] as String,
-      date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
+      date: date,
       title: map['title'] as String,
       context: map['context'] as String,
-      comments: Comment.fromMap(map['comments'] as Map<String, dynamic>),
       id: map['id'] as int,
     );
   }
@@ -74,7 +73,7 @@ class ReplyItem {
 
   @override
   String toString() {
-    return 'ReplyItem(author: $author, text: $text, date: $date, title: $title, context: $context, comments: $comments, id: $id)';
+    return 'ReplyItem(author: $author, text: $text, date: $date, title: $title, context: $context, id: $id)';
   }
 
   @override
@@ -86,7 +85,6 @@ class ReplyItem {
         other.date == date &&
         other.title == title &&
         other.context == context &&
-        other.comments == comments &&
         other.id == id;
   }
 
@@ -97,7 +95,6 @@ class ReplyItem {
         date.hashCode ^
         title.hashCode ^
         context.hashCode ^
-        comments.hashCode ^
         id.hashCode;
   }
 }
