@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -10,16 +11,29 @@ class ReplyItemListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final items = ref.watch(listProvider);
+    final notifier = ref.watch(listProvider.notifier);
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ListView.builder(
-        restorationId: 'replyItemListView',
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) {
-          final item = items[index];
-
-          return ListTileItemWidget(item: item);
+      child: StreamBuilder(
+        stream: notifier.getReplies(),
+        builder: (context, snapshot) {
+          Widget returnItem = Container();
+          if (snapshot.hasData) {
+            final data = snapshot.data!.docs;
+            returnItem = ListView.builder(
+              restorationId: 'replyItemListView',
+              itemCount: data.length,
+              itemBuilder: (BuildContext context, int index) {
+                DocumentSnapshot document = data[index];
+                final item =
+                    ReplyItem.fromMap(document.data() as Map<String, dynamic>);
+                return ListTileItemWidget(item: item);
+              },
+            );
+          } else if (snapshot.hasError) {
+            returnItem = const Text("Error finding data");
+          }
+          return returnItem;
         },
       ),
     );
