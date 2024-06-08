@@ -33,7 +33,9 @@ class ListTileItemWidget extends ConsumerWidget {
             border: Border.all(color: Colors.grey, width: .5),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withAlpha(100),
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.black.withAlpha(100)
+                    : Colors.white.withAlpha(100),
                 blurRadius: 3,
                 offset: const Offset(3, 3),
               )
