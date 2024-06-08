@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:then_he_replied/src/data/reply_item.dart';
 import 'package:then_he_replied/src/presentation/reply_details_screen/reply_item_details_view.dart';
 import 'package:then_he_replied/src/presentation/reply_list_screen/list_provider.dart';
+import 'package:then_he_replied/src/settings/settings_controller.dart';
+import 'package:then_he_replied/src/settings/settings_service.dart';
 
 class ListTileItemWidget extends ConsumerWidget {
   const ListTileItemWidget({
@@ -24,6 +26,9 @@ class ListTileItemWidget extends ConsumerWidget {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.light
+                ? Colors.white
+                : Colors.black,
             borderRadius: BorderRadius.circular(4),
             border: Border.all(color: Colors.grey, width: .5),
             boxShadow: [
