@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:then_he_replied/src/presentation/common/app_bar/app_bar.dart';
 import 'package:then_he_replied/src/presentation/create_reply/create_reply_view.dart';
+import 'package:then_he_replied/src/presentation/login/login_view.dart';
 import 'package:then_he_replied/src/presentation/profile/profile_view.dart';
 import 'package:then_he_replied/src/presentation/reply_list_screen/reply_list_view.dart';
 
@@ -18,35 +20,39 @@ class MainView extends ConsumerWidget {
     const ProfileView(),
   ];
 
+  final User? user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final indexBottomNavbar = ref.watch(indexBottomNavbarProvider);
-    return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size(double.infinity, kToolbarHeight),
-        child: RepliedAppBar(),
-      ),
-      body: bodies[indexBottomNavbar],
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: indexBottomNavbar,
-          onTap: (value) => ref
-              .read(indexBottomNavbarProvider.notifier)
-              .update((state) => value),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+    return user != null
+        ? Scaffold(
+            appBar: const PreferredSize(
+              preferredSize: Size(double.infinity, kToolbarHeight),
+              child: RepliedAppBar(),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_circle_outline_outlined),
-              label: 'Add',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ]),
-    );
+            body: bodies[indexBottomNavbar],
+            bottomNavigationBar: BottomNavigationBar(
+                currentIndex: indexBottomNavbar,
+                onTap: (value) => ref
+                    .read(indexBottomNavbarProvider.notifier)
+                    .update((state) => value),
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.add_circle_outline_outlined),
+                    label: 'Add',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person),
+                    label: 'Profile',
+                  ),
+                ]),
+          )
+        : const LoginView();
   }
 }
 
