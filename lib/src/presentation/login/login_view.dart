@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:then_he_replied/src/presentation/common/app_bar/app_bar.dart';
+import 'package:then_he_replied/src/services/firestore_auth_service.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
@@ -54,9 +55,19 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     Expanded(
                       child: ElevatedButton(
                         child: const Text("Submit"),
-                        onPressed: () {
+                        onPressed: () async {
                           print(
                               "Email ${emailController.text}, Pword ${pwordController.text}");
+                          final message = await AuthService().login(
+                              email: emailController.text,
+                              password: pwordController.text);
+                          if (message == 'Success' && context.mounted) {
+                            Navigator.of(context).pushReplacementNamed('/');
+                          }
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(message ?? "Error logging in.")));
+                          }
                         },
                       ),
                     ),
@@ -64,13 +75,14 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 ),
               ),
               Center(
-                  child: CupertinoButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed("/create_account");
-                },
-                child: const Text("Don't have an account? Sign up here.",
-                    style: TextStyle(decoration: TextDecoration.underline)),
-              )),
+                child: CupertinoButton(
+                  onPressed: () async {
+                    Navigator.pushReplacementNamed(context, '/create_account');
+                  },
+                  child: const Text("Don't have an account? Sign up here.",
+                      style: TextStyle(decoration: TextDecoration.underline)),
+                ),
+              ),
             ],
           ),
         ),

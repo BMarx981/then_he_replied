@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:then_he_replied/src/presentation/login/create_account_view.dart';
 import 'package:then_he_replied/src/presentation/login/login_view.dart';
 import 'package:then_he_replied/src/presentation/reply_details_screen/reply_item_details_view.dart';
 import 'package:then_he_replied/src/presentation/main_view.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
           // background.
-          restorationScopeId: 'app',
+          restorationScopeId: 'replied',
 
           // Provide the generated AppLocalizations to the MaterialApp. This
           // allows descendant Widgets to display the correct translations
@@ -60,7 +61,13 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
-
+          routes: {
+            '/': (context) => MainView(),
+            '/login': (context) => const LoginView(),
+            '/create_account': (context) => const CreateAccount(),
+            'reply_item': (context) => const ReplyItemDetailsView(),
+          },
+          initialRoute: '/',
           // Define a function to handle named routes in order to support
           // Flutter web url navigation and deep linking.
           onGenerateRoute: (RouteSettings routeSettings) {

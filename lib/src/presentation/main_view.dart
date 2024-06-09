@@ -9,9 +9,7 @@ import 'package:then_he_replied/src/presentation/reply_list_screen/reply_list_vi
 
 /// Displays a list of ReplyItems.
 class MainView extends ConsumerWidget {
-  MainView({
-    super.key,
-  });
+  MainView({super.key});
 
   static const routeName = '/';
   final List<Widget> bodies = [

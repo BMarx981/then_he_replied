@@ -4,8 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:then_he_replied/src/data/reply_item.dart';
 import 'package:then_he_replied/src/presentation/reply_details_screen/reply_item_details_view.dart';
 import 'package:then_he_replied/src/presentation/reply_list_screen/list_provider.dart';
-import 'package:then_he_replied/src/settings/settings_controller.dart';
-import 'package:then_he_replied/src/settings/settings_service.dart';
 
 class ListTileItemWidget extends ConsumerWidget {
   const ListTileItemWidget({

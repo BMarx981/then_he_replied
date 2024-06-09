@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:then_he_replied/src/presentation/common/app_bar/app_bar.dart';
+import 'package:then_he_replied/src/services/firestore_auth_service.dart';
 
 class CreateAccount extends ConsumerStatefulWidget {
   const CreateAccount({super.key});
@@ -33,28 +34,51 @@ class _CreateAccountState extends ConsumerState<CreateAccount> {
       body: Form(
         key: formkey,
         child: Center(
-          child: Column(
-            children: [
-              const Text("Welcome to ...Then He Replied."),
-              const Text("Create Account"),
-              TextFormField(
-                decoration: const InputDecoration(label: Text("Email")),
-                controller: _emailController,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(label: Text("Password")),
-                controller: _pwordController,
-                obscureText: true,
-              ),
-              ElevatedButton(
-                child: const Text("Submit"),
-                onPressed: () {
-                  print(
-                      "Email ${_emailController.text}, Pword ${_pwordController.text}");
-                  Navigator.pushReplacementNamed(context, '/');
-                },
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                const Text("Create Account"),
+                TextFormField(
+                  decoration:
+                      const InputDecoration(label: Text("Register Your Email")),
+                  controller: _emailController,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(label: Text("Password")),
+                  controller: _pwordController,
+                  obscureText: true,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          child: const Text("Create Account"),
+                          onPressed: () async {
+                            print(
+                                "Email ${_emailController.text}, Password entered ${_pwordController.text}");
+                            final message = await AuthService().registration(
+                              email: _emailController.text,
+                              password: _pwordController.text,
+                            );
+                            if (message!.contains('Success') &&
+                                context.mounted) {
+                              Navigator.of(context).pushNamed("/login");
+                            }
+                            if (context.mounted) {
+                              Navigator.pushReplacementNamed(context, '/');
+                            }
+                            print(message);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
